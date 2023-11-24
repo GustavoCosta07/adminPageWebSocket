@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Página do Administrador</title>
+</head>
+<body>
+  <h1>Página do Administrador</h1>
+  <div id="resultado"></div>
+  <script>
+    const ws = new WebSocket('ws://localhost:3000');
+    ws.onmessage = (event) => {
+      const response = JSON.parse(event.data);
+      document.getElementById('resultado').innerHTML = `<p>${response.greeting}</p><p>${response.username}</p><p>${response.password}</p>`;
+    };
+  </script>
+</body>
+</html>
